@@ -43,6 +43,19 @@ h1 {
 }
 
 
+/* bloquear celula com cursor bloqueado de clique nao permitido */
+
+.cell.x,
+.cell.circle {
+    cursor: not-allowed;
+}
+
+
+
+
+
+/* tirar as laterais da tabela */
+
 .cell:nth-child(1),
 .cell:nth-child(2),
 .cell:nth-child(3) {
@@ -87,9 +100,6 @@ h1 {
 }
 
 
-
-
-
 .cell.circle::before, .cell.circle::after {
     content: "";
     height: calc(100px * 0.9);
@@ -100,7 +110,39 @@ h1 {
 }
 
 
-
 .winning-message {
-    display: none;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(129, 127, 127, 0.8);
+    flex-direction: column; /* para o conteúdo ficar sobreposto*/
+}
+
+.winning-message-button {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2.5rem;
+    background-color: #eea2a2;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    margin-top: 16px; /* espaçamento entre o botao e o texto */
+    color: whitesmoke;
+}
+
+.winning-message-button:hover {
+    font-family: 'Courier New', Courier, monospace;
+    color: #eea2a2;
+    background-color: antiquewhite;
+} 
+
+.winning-message-text {
+    font-family: 'Courier New', Courier, monospace;
+    color: antiquewhite;
+    font-size: 3rem;   
 }
