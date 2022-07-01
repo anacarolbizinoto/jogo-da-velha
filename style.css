@@ -35,6 +35,8 @@ h1 {
     grid-template-columns: repeat(3,auto);
 }
 
+
+
 .cell {
     width: 100px;
     height: 100px;
