@@ -1,4 +1,10 @@
 const cellElements = document.querySelectorAll("[data-cell]");
+const winningMessageTextElement = document.querySelector(
+    "[data-winning-message-text]"
+  );
+  const winningMessage = document.querySelector("[data-winning-message]");
+  const restartButton = document.querySelector("[data-restart-button]");
+
 
 let isCircleTurn = false;
 
@@ -13,6 +19,23 @@ let isCircleTurn = false;
     [2, 4, 6],
  ]
 
+
+ const endGame = (isDraw) => {
+    if (isDraw) {
+      winningMessageTextElement.innerText = "Empate!";
+    } else {
+      winningMessageTextElement.innerText = isCircleTurn
+        ? "O Venceu!"
+        : "X Venceu!";
+    }
+
+    const checkForWin = (currentPlayer) => {
+        return winningCombinations.some((combination) => {
+          return combination.every((index) => {
+            return cellElements[index].classList.contains(currentPlayer);
+          });
+        });
+      };
 const placeMark = (cell, classToAdd) => {
     cell.classList.add(classToAdd)
 }
@@ -30,15 +53,19 @@ const handleClick = (e) => {
 
     // verificar vitória
 
+const isWin = checkForWin(classToAdd);
+    console.log("winner");
 
     // verificar empate
-
-
-
+    if (isWin) {
+        endGame(false);
+    } else if (isDraw) {
+        endGame (true);
+    } else {
     // mudar de simbolo
-
     swapTurns();
-}
+    }
+ };
 
 for (const cell of cellElements) {
     cell.addEventListener("click", handleClick, { once:true});
